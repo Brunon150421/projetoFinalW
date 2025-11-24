@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Idoso</title>
+    <link rel="stylesheet" href="../css/cabecalho.css">
+    <link rel="stylesheet" href="../css/cadastrarIdoso.css">
+    
+</head>
+
+
+<body>
+
+     <header>
+        <div class="logo">
+          <img src="../img/logo.png" alt="Examoteca">
+          <span>Examoteca</span>
+        </div>
+
+        <nav>
+          <ul>
+            <li><a href="cadastrarIdoso.html">Cadastrar idoso</a></li>
+            <li><a href="enviarExames.html">Enviar exames</a></li>
+            <li><a href="visualizarExames.html">Visualizar exames</a></li>
+          </ul>
+        </nav>
+
+        <div class="botoes">
+          <a href="login.html" class="login">Login</a>
+          <a href="cadastro.html" class="cadastro">Cadastro</a>
+        </div>
+        
+    </header>
+
+
+    <div class="container">
+
+        <h2>Insira algumas informações para iniciar o acompanhamento</h2>
+
+        <form>
+
+            <!-- Dados pessoais -->
+            <div class="form-row">
+                <label>Nome Completo:</label>
+                <input type="text" placeholder="">
+            </div>
+
+            <div class="form-row row-3">
+                <div>
+                    <label>Data de Nascimento:</label>
+                    <input type="date">
+                </div>
+
+                <div>
+                    <label>Gênero:</label>
+                    <select>
+                        <option>Selecione</option>
+                        <option>Feminino</option>
+                        <option>Masculino</option>
+                        <option>Outro</option>
+                    </select>
+                </div>
+            </div>
+
+            <h3>Contato de emergência</h3>
+
+            <div class="form-row row-3">
+                <div>
+                    <label>Nome:</label>
+                    <input type="text">
+                </div>
+
+                <div>
+                    <label>Telefone:</label>
+                    <input type="text">
+                </div>
+
+                <div>
+                    <label>Email:</label>
+                    <input type="email">
+                </div>
+            </div>
+
+            <h3>Informações de Saúde</h3>
+
+            <div class="form-row row-2">
+                <div>
+                    <label>Condições médicas:</label>
+                    <input type="text">
+                </div>
+
+                <div>
+                    <label>Cuidados Especiais:</label>
+                    <input type="text">
+                </div>
+            </div>
+
+            <div class="btn-container">
+                <button type="submit" class="btn-save">Salvar Cadastro</button>
+            </div>
+
+        </form>
+    </div>
+
+</body>
+</html>

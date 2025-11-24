@@ -1,0 +1,75 @@
+/* HEADER PADRÃO */
+header {
+  width: 100%;
+  background: #ffffff;
+  border-bottom: 1px solid #eee;
+  padding: 18px 60px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* LOGO */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo img {
+  width: 42px;
+}
+
+.logo span {
+  font-size: 26px;
+  font-weight: 700;
+  color: #4a5fc1;   /* MESMA COR DA LOGO */
+}
+
+/* MENU */
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 35px;
+  margin: 0;
+  padding: 0;
+}
+
+nav a {
+  text-decoration: none;
+  color: #d76d52;   /* MESMA COR PADRÃO DO RESTO DO SITE */
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* BOTÕES */
+.botoes a {
+  padding: 10px 22px;
+  font-size: 17px;
+  border-radius: 12px;
+  border: 2px solid #bfc3e6;
+  background: #f6f6ff;
+  cursor: pointer;
+  font-weight: 600;
+  color: #4a5fc1;   /* PADRÃO DA MARCA */
+}
+
+.botoes a{
+  background: #ffffff;
+}
+
+/* RESPONSIVO */
+@media (max-width: 900px) {
+  header {
+    padding: 20px 20px;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  nav ul {
+    gap: 20px;
+  }
+}

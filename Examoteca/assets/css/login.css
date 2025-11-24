@@ -1,0 +1,286 @@
+/* Ajuste geral */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #ffffff;
+}
+
+/* CONTAINER GERAL: DUAS COLUNAS */
+.container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+
+/* LADO ESQUERDO */
+.left-side {
+    width: 40%;
+    background-color: #e4d4f3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 40px;
+}
+
+/* espaço entre a logo e o texto */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 15px; 
+}
+
+/* tamanho da logo examoteca */
+.logo img {
+    width: 60px; 
+}
+
+.logo-text {
+    font-size: 35px;
+    font-weight: bold;
+    color: #6c6ca8; 
+}
+
+
+.illustration img { 
+    width: 200px;
+    align-self: center;
+    margin-left: 100px;
+}
+
+/* LADO DIREITO */
+.right-side {
+    width: 60%;
+    padding: 80px;
+}
+.title {
+    font-size: 50px;
+    color: #ff8f79;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    font-size: 18px;
+    margin-bottom: 30px;
+    color:rgb(85, 84, 84)
+}
+
+.link-create {
+    color: #ff8f79;
+    text-decoration: none;
+}
+
+/* CAMPOS DE INPUT */
+.label {
+    font-size: 18px;
+    margin: 10px 0 5px;
+    display: block;
+}
+
+.input {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #d9c5f7;
+    border-radius: 12px;
+    outline: none;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+/* BOTÃO */
+.btn a{
+    width: 200px;
+    padding: 15px;
+    background-color: #ff8f79;
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+.remember {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 25px;
+}
+
+.forgot {
+    display: block;
+    margin-top: 30px;
+    color: #ff8f79;
+    text-decoration: none;
+}
+/* TABLETS (até 1024px) */
+@media (max-width: 1024px) {
+    .container {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .left-side, .right-side {
+        width: 100%;
+    }
+
+    .left-side {
+        padding: 30px;
+        height: 350px;
+    }
+
+    .illustration img {
+        width: 250px;
+    }
+
+    .right-side {
+        padding: 40px;
+    }
+
+    .title {
+        font-size: 40px;
+        text-align: center;
+    }
+
+    form {
+        width: 100%;
+    }
+
+    .btn {
+        width: 100%;
+    }
+}
+/* CELULARES GRANDES (até 768px) */
+@media (max-width: 768px) {
+
+    .left-side {
+        height: 300px;
+    }
+
+    .logo img {
+        width: 150px;
+    }
+
+    .illustration img {
+        width: 200px;
+    }
+
+    .right-side {
+        padding: 25px;
+    }
+
+    .input {
+        padding: 12px;
+        font-size: 16px;
+    }
+
+    .btn {
+        padding: 12px;
+        font-size: 20px;
+    }
+
+    .title {
+        font-size: 32px;
+    }
+
+    .subtitle {
+        font-size: 16px;
+    }
+}
+/* CELULARES (ATÉ 480px) — RESPONSIVIDADE CORRIGIDA */
+@media (max-width: 480px) {
+
+    .container {
+        flex-direction: column;
+        height: auto;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    /* LADO ESQUERDO — aumenta altura para evitar sobreposição */
+    .left-side {
+        width: 100%;
+        padding: 20px;
+        height: auto;
+        min-height: 260px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Logo e texto lado a lado */
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .logo img {
+        width: 55px; /* reduz para caber */
+    }
+
+    .logo-text {
+        font-size: 26px;
+    }
+
+    /* Imagem grande da ilustração */
+    .illustration img {
+        width: 60%;
+        max-width: 230px;
+        height: auto;
+        display: block;
+        margin-left: 40px;
+    }
+
+    /* LADO DIREITO */
+    .right-side {
+        width: 100%;
+        padding: 25px;
+    }
+
+    .title {
+        font-size: 32px;
+        text-align: center;
+    }
+
+    .subtitle {
+        text-align: center;
+        font-size: 15px;
+    }
+
+    /* Inputs sem ultrapassar a tela */
+    .input {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+    }
+
+    /* Botão ocupa largura total */
+    .btn {
+        width: 100%;
+        padding: 12px;
+        font-size: 18px;
+    }
+
+    .remember {
+        margin-top: 18px;
+        font-size: 14px;
+    }
+
+    .forgot {
+        text-align: center;
+        font-size: 14px;
+    }
+}

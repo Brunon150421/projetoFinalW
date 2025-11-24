@@ -1,0 +1,131 @@
+/* Fonte padrão */
+body {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #fff;
+}
+
+/* HEADER */
+header {
+  width: 100%;
+  background: #ffffff;
+  border-bottom: 1px solid #eee;
+  padding: 18px 60px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo img {
+  width: 42px;
+}
+
+.logo span {
+  font-size: 26px;
+  font-weight: 700;
+  color: #4a5fc1;
+}
+
+/* MENU */
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 35px;
+  margin: 0;
+  padding: 0;
+}
+
+nav a {
+  text-decoration: none;
+  color: #d76d52;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* BOTÕES */
+.botoes button {
+  padding: 10px 22px;
+  font-size: 17px;
+  border-radius: 12px;
+  border: 2px solid #bfc3e6;
+  background: #f6f6ff;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.botoes .login {
+  color: #4a5fc1;
+}
+
+.botoes .cadastro {
+  color: #4a5fc1;
+  background: #ffffff;
+}
+
+/* HERO (parte principal da página) */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 80px 60px;
+}
+
+/* Texto da esquerda */
+.texto {
+  max-width: 520px;
+}
+
+.texto h1 {
+  font-size: 46px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: #000;
+}
+
+/* Cores destacadas */
+.azul {
+  color: #4a5fc1;
+}
+
+.destaque {
+  color: #d76d52;
+}
+
+/* IMAGEM DO LADO DIREITO */
+.illustracao img {
+  width: 420px;
+  max-width: 100%;
+}
+
+/* RESPONSIVO */
+@media (max-width: 900px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .texto h1 {
+    font-size: 32px;
+  }
+
+  header {
+    padding: 20px 20px;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  nav ul {
+    gap: 20px;
+  }
+}

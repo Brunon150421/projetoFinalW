@@ -1,0 +1,142 @@
+
+/* Fonte padrão */
+body {
+    font-family: 'Open Sans', sans-serif;
+    background: #ffffff;
+    padding: 20px 40px;
+    color: #333;
+}
+
+/* Títulos principais */
+h1 {
+    font-size: 42px;
+    font-weight: 700;
+    color: #4f4c97;
+    margin-bottom: 10px;
+}
+
+h3 {
+    font-size: 20px;
+    font-weight: 500;
+    margin: 25px 0 10px;
+}
+
+/* Container geral da página */
+.envioExames {
+    max-width: 900px;
+    margin-top: 20px;
+}
+
+/* Select de idoso */
+select, input[type="date"], input[type="text"] {
+    padding: 12px 20px;
+    font-size: 16px;
+    border: 2px solid #d8c8f5;
+    border-radius: 12px;
+    outline: none;
+    background: #f6f0ff;
+    color: #333;
+}
+
+select {
+    width: 220px;
+}
+
+/* Área de envio de arquivo */
+.envioExame {
+    border: 2px dashed #5c5b5b;
+    border-radius: 14px;
+    height: 200px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+    text-align: center;
+    background: #fff;
+}
+
+.envioExame p {
+    font-size: 22px;
+    color: #e88776;
+    margin-top: 15px;
+}
+
+.envioExame span {
+    margin: 10px 0;
+    font-size: 15px;
+    color: #444;
+}
+
+.envioExame input {
+    margin-top: 10px;
+}
+
+/* Nome/descrição */
+.nomeExame input {
+    width: 350px;
+}
+
+/* Categoria + Data — lado a lado */
+.categoria-data {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.categoria-data select {
+    width: 200px;
+}
+
+.categoria-data input[type="date"] {
+    width: 180px;
+}
+
+/* Caixa de informações adicionais */
+.infoAd input {
+    width: 100%;
+    height: 120px;
+    border-radius: 12px;
+    padding: 15px;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+/* Botão final */
+.btEnviar {
+    margin-top: 30px;
+    padding: 15px 35px;
+    font-size: 22px;
+    font-weight: bold;
+    background-color: #666cc2;
+    border: none;
+    color: white;
+    border-radius: 12px;
+    cursor: pointer;
+    float: right;
+    transition: 0.2s;
+}
+
+.btEnviar:hover {
+    opacity: 0.9;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .categoria-data {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .btEnviar {
+        width: 100%;
+        float: none;
+        text-align: center;
+    }
+
+    .nomeExame input {
+        width: 100%;
+    }
+}

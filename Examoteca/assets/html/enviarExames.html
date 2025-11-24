@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/cabecalho.css">
+  <link rel="stylesheet" href="../css/envioEvisu.css"> <!-- ou a css da página -->
+
+  <title>Documentos Médicos</title>
+</head>
+<body>
+
+  <header>
+
+    <div class="logo">
+      <img src="../img/logo.png" alt="Examoteca">
+      <span>Examoteca</span>
+    </div>
+
+    <nav>
+      <ul class="nav-links">
+        <li><a href="cadastrarIdoso.html">Cadastrar Idoso</a></li>
+        <li><a href="enviarExames.html">Enviar Exames</a></li>
+        <li><a href="visualizarExames.html">Visualizar Exames</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="envioExames">
+
+  <h1>Enviar exames</h1>
+  <h3>Faça o upload de novos exames e laudos médicos</h3>
+
+  <div class="selectIdoso">
+  <h3>Para qual idoso é este exame?</h3>
+
+  <select id="idIdoso">
+    <option value="">Selecione...</option>
+  </select>
+
+  </div>
+
+    <h3>Arquivo do Exame (PDF, JPG, PNG)</h3>
+
+  <div class="envioExame" id="areaEnvio">
+    <p>Arraste e solte seu exame aqui</p>
+    <span>ou</span>
+    <input type="file" id="envioExame" multiple>
+  </div>
+
+  <div id="listaExames"></div>
+
+
+    <div class="nomeExame">
+
+    <h3>Nome/Descrição do Exame</h3>
+    <input type="text" id="nomeExame" placeholder="Digite o nome do exame">
+
+    </div>
+
+    <div class="categoria-data">
+      <h3>Categoria do exame</h3>
+       <select id="filtros">
+    <option value="">Selecione...</option>
+      </select>
+
+      <h3>Data do Exame</h3>
+      <input type="date" id="dataExame" name="dataExame">
+
+    </div>
+
+    <div class="infoAd">
+      <input type="text" id="infoAd" placeholder="Informações Adicionais">
+    </div>
+
+      <button class="btEnviar" onclick="salvarExame()">Enviar Exame</button>
+
+   </div>
+
+  
+
+<div id="fileList"></div>
+
+
+  <script src="./assets/js/telaExames.js"></script>
+</body>
+</html>
