@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Examoteca</title>
-    <link rel="stylesheet" href="../css/cabecalho.css">
-    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="/cabecalho.css">
+    <link rel="stylesheet" href="/login.css">
     
 
 <body>
@@ -15,7 +15,7 @@
     <!-- LADO ESQUERDO -->
     <div class="left-side">
         <div class="logo">
-            <img src="../img/logo.png" alt="Logo Examoteca">
+            <img src="/logo.png" alt="Logo Examoteca">
             <span class="logo-text">Examoteca</span>
         </div>
 
@@ -31,27 +31,27 @@
 
         <p class="subtitle">
             Não possui uma conta?
-            <a href="#" class="link-create">Crie uma conta</a>
+            <a href="/cadastro" class="link-create">Crie uma conta</a>
         </p>
 
-        <form>
+       <form action="/login" method="post">
 
             <label class="label">Email</label>
-            <input type="email" class="input">
+            <input type="email" name="email" class="input" required>
 
             <label class="label">Senha</label>
-            <input type="password" class="input">
+            <input type="password" name="password" class="input" required>
 
-            <button class="btn">Sing in</button>
+    <button type="submit" class="btn">Sign in</button>
 
-            <div class="remember">
-                <input type="checkbox">
-                <span>Lembrar da senha</span>
-            </div>
+    <div class="remember">
+        <input type="checkbox">
+        <span>Lembrar da senha</span>
+    </div>
 
-            <a href="#" class="forgot">Esqueceu a senha?</a>
+    <a href="#" class="forgot">Esqueceu a senha?</a>
 
-        </form>
+</form>
 
     </div>
 
