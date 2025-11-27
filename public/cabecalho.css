@@ -1,75 +1,219 @@
-/* HEADER PADRÃO */
+/* UNIFICAÇÃO DE FONTES - EXAMOTECA */
+* {
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* IMPORT DA FONTE */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
+
+/* CONFIGURAÇÕES BÁSICAS */
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+/* TÍTULOS */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+}
+
+h1 {
+    font-weight: 700;
+}
+
+/* TEXTO COMUM */
+p, span, div, li, td {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+}
+
+/* LINKS E BOTÕES */
+a, button, .btn {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 500;
+}
+
+/* FORMULÁRIOS */
+input, select, textarea {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+}
+
+input::placeholder {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+}
+/* RESET PARA EVITAR SCROLL HORIZONTAL */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    overflow-x: hidden; /* Remove scroll horizontal */
+}
+
+/* HEADER CORRIGIDO */
 header {
-  width: 100%;
-  background: #ffffff;
-  border-bottom: 1px solid #eee;
-  padding: 18px 60px;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  font-family: 'Open Sans', sans-serif;
+    width: 100%;
+    max-width: 100vw; /* Garante que não ultrapasse a tela */
+    background: #ffffff;
+    border-bottom: 1px solid #eee;
+    padding: 18px 5%; /* ✅ Alterado: porcentagem em vez de pixels fixos */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'Open Sans', sans-serif;
+    position: relative;
 }
 
 /* LOGO */
 .logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0; /* Evita que a logo encolha */
 }
 
 .logo img {
-  width: 42px;
+    width: 42px;
+    height: auto; /* Mantém proporção */
 }
 
 .logo span {
-  font-size: 26px;
-  font-weight: 700;
-  color: #4a5fc1;   /* MESMA COR DA LOGO */
+    font-size: 26px;
+    font-weight: 700;
+    color: #4a5fc1;
+    white-space: nowrap; /* Evita quebra de texto */
 }
 
 /* MENU */
+nav {
+    flex: 1; /* Ocupa espaço disponível */
+    display: flex;
+    justify-content: center;
+}
+
 nav ul {
-  list-style: none;
-  display: flex;
-  gap: 35px;
-  margin: 0;
-  padding: 0;
+    list-style: none;
+    display: flex;
+    gap: 35px;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap; /* ✅ Permite quebra em telas menores */
+    justify-content: center;
 }
 
 nav a {
-  text-decoration: none;
-  color: #d76d52;   /* MESMA COR PADRÃO DO RESTO DO SITE */
-  font-size: 20px;
-  font-weight: 600;
+    text-decoration: none;
+    color: #d76d52;
+    font-size: 20px;
+    font-weight: 600;
+    white-space: nowrap; /* ✅ Evita quebra de links */
 }
 
 /* BOTÕES */
-.botoes a {
-  padding: 10px 22px;
-  font-size: 17px;
-  border-radius: 12px;
-  border: 2px solid #bfc3e6;
-  background: #f6f6ff;
-  cursor: pointer;
-  font-weight: 600;
-  color: #4a5fc1;   /* PADRÃO DA MARCA */
-}
-
-.botoes a{
-  background: #ffffff;
-}
-
-/* RESPONSIVO */
-@media (max-width: 900px) {
-  header {
-    padding: 20px 20px;
-    flex-direction: column;
+.botoes {
+    display: flex;
     gap: 15px;
-  }
+    flex-shrink: 0; /* ✅ Evita que botões encolham */
+}
 
-  nav ul {
-    gap: 20px;
-  }
+.botoes a {
+    padding: 10px 22px;
+    font-size: 17px;
+    border-radius: 12px;
+    border: 2px solid #bfc3e6;
+    background: #f6f6ff;
+    cursor: pointer;
+    font-weight: 600;
+    color: #4a5fc1;
+    text-decoration: none;
+    white-space: nowrap; /* ✅ Evita quebra de texto nos botões */
+    transition: all 0.3s ease;
+}
+
+.botoes a:hover {
+    background: #ffffff;
+    transform: translateY(-2px);
+}
+
+/* RESPONSIVO MELHORADO */
+@media (max-width: 1100px) {
+    header {
+        padding: 15px 3%; /* ✅ Padding menor em telas médias */
+    }
+    
+    nav ul {
+        gap: 25px; /* ✅ Reduz gap entre links */
+    }
+    
+    nav a {
+        font-size: 18px; /* ✅ Reduz tamanho da fonte */
+    }
+}
+
+@media (max-width: 900px) {
+    header {
+        padding: 15px 20px;
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    nav ul {
+        gap: 20px;
+    }
+    
+    nav a {
+        font-size: 16px;
+    }
+    
+    .logo span {
+        font-size: 22px; /* ✅ Reduz logo em mobile */
+    }
+}
+
+@media (max-width: 600px) {
+    header {
+        padding: 12px 15px;
+    }
+    
+    nav ul {
+        gap: 15px;
+        flex-wrap: wrap; /* ✅ Quebra links em múltiplas linhas */
+    }
+    
+    nav a {
+        font-size: 14px;
+    }
+    
+    .botoes {
+        flex-direction: column; /* ✅ Botões em coluna em mobile */
+        width: 100%;
+        align-items: center;
+    }
+    
+    .botoes a {
+        width: 100%;
+        text-align: center;
+        padding: 8px 16px;
+        font-size: 15px;
+    }
+    
+    .logo span {
+        font-size: 20px;
+    }
+}
+
+/* CORREÇÃO EXTRA - Garante que containers não causem overflow */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
 }

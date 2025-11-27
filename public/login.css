@@ -92,7 +92,7 @@ body {
 }
 
 /* BOTÃO */
-.btn a{
+.btn {
     width: 200px;
     padding: 15px;
     background-color: #ff8f79;

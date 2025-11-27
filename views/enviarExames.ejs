@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/cabecalho.css">
+  <link rel="stylesheet" href="/envioEvisu.css">
+
+  <title>Documentos Médicos</title>
+</head>
+<body>
+
+  <header>
+
+    <div class="logo">
+      <img src="/logo.png" alt="Examoteca">
+      <span>Examoteca</span>
+    </div>
+
+    <nav>
+      <ul class="nav-links">
+        <li><a href="/cadastrarIdoso">Cadastrar Idoso</a></li>
+        <li><a href="/enviarExames">Enviar Exames</a></li> <!-- ✅ Corrigido: removi .html -->
+        <li><a href="/visualizarExames">Visualizar Exames</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="envioExames">
+
+  <h1>Enviar exames</h1>
+  <h3>Faça o upload de novos exames e laudos médicos</h3>
+
+  <div class="selectIdoso">
+  <h3>Para qual idoso é este exame?</h3>
+
+  <!-- ✅ SELECT CORRIGIDO - Agora mostra os idosos do banco -->
+  <select id="idIdoso" name="idIdoso" required>
+    <option value="">Selecione...</option>
+    <% if (idosos && idosos.length > 0) { %>
+      <% idosos.forEach(idoso => { %>
+        <option value="<%= idoso.id %>">
+          <%= idoso.nome %> 
+          <% if (idoso.idade) { %> - <%= idoso.idade %> anos<% } %>
+        </option>
+      <% }); %>
+    <% } else { %>
+      <option value="">Nenhum idoso cadastrado</option>
+    <% } %>
+  </select>
+
+  </div>
+
+    <h3>Arquivo do Exame (PDF, JPG, PNG)</h3>
+
+  <div class="envioExame" id="areaEnvio">
+    <p>Arraste e solte seu exame aqui</p>
+    <span>ou</span>
+    <input type="file" id="envioExame" multiple>
+  </div>
+
+  <div id="listaExames"></div>
+
+    <div class="nomeExame">
+
+    <h3>Nome/Descrição do Exame</h3>
+    <input type="text" id="nomeExame" placeholder="Digite o nome do exame" required>
+
+    </div>
+
+    <div class="categoria-data">
+      <h3>Categoria do exame</h3>
+       <!-- ✅ SELECT DE CATEGORIAS PREENCHIDO -->
+       <select id="filtros" name="filtros" required>
+        <option value="">Selecione...</option>
+        <option value="Hemograma">Hemograma</option>
+        <option value="Raio-X">Raio-X</option>
+        <option value="Ultrassom">Ultrassom</option>
+        <option value="Ressonância">Ressonância Magnética</option>
+        <option value="Tomografia">Tomografia</option>
+        <option value="Eletrocardiograma">Eletrocardiograma</option>
+        <option value="Outros">Outros</option>
+      </select>
+
+      <h3>Data do Exame</h3>
+      <input type="date" id="dataExame" name="dataExame" required>
+
+    </div>
+
+    <div class="infoAd">
+      <input type="text" id="infoAd" placeholder="Informações Adicionais" name="infoAd">
+    </div>
+
+      <button type="button" class="btEnviar" onclick="salvarExame()">Enviar Exame</button>
+
+   </div>
+
+  <div id="fileList"></div>
+
+ 
+<script src="/enviarExame.js"></script>
+</body>
+</html>

@@ -1,7 +1,12 @@
-
-/* Fonte padrão */
-body {
+/* ENVIO EXAMES - CSS COMPLETO */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     font-family: 'Open Sans', sans-serif;
+}
+
+body {
     background: #ffffff;
     padding: 20px 40px;
     color: #333;
@@ -17,17 +22,23 @@ h1 {
 
 h3 {
     font-size: 20px;
-    font-weight: 500;
+    font-weight: 600;
     margin: 25px 0 10px;
+    color: #4f4c97;
 }
 
 /* Container geral da página */
 .envioExames {
     max-width: 900px;
-    margin-top: 20px;
+    margin: 20px auto;
+    padding: 0 20px;
 }
 
 /* Select de idoso */
+.selectIdoso {
+    margin-bottom: 25px;
+}
+
 select, input[type="date"], input[type="text"] {
     padding: 12px 20px;
     font-size: 16px;
@@ -36,6 +47,7 @@ select, input[type="date"], input[type="text"] {
     outline: none;
     background: #f6f0ff;
     color: #333;
+    font-family: 'Open Sans', sans-serif;
 }
 
 select {
@@ -44,7 +56,7 @@ select {
 
 /* Área de envio de arquivo */
 .envioExame {
-    border: 2px dashed #5c5b5b;
+    border: 2px dashed #d8c8f5;
     border-radius: 14px;
     height: 200px;
     padding: 25px;
@@ -54,23 +66,51 @@ select {
     justify-content: center;
     margin-top: 15px;
     text-align: center;
-    background: #fff;
+    background: #faf9ff;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.envioExame:hover {
+    border-color: #4f4c97;
+    background: #f6f0ff;
+}
+
+.envioExame.dragover {
+    border-color: #4f4c97;
+    background: #f0edff;
 }
 
 .envioExame p {
     font-size: 22px;
-    color: #e88776;
+    color: #4f4c97;
     margin-top: 15px;
+    font-weight: 600;
 }
 
 .envioExame span {
     margin: 10px 0;
     font-size: 15px;
-    color: #444;
+    color: #666;
 }
 
 .envioExame input {
     margin-top: 10px;
+}
+
+/* Lista de arquivos selecionados */
+#listaExames {
+    margin: 15px 0;
+    padding: 15px;
+    background: #f8f6ff;
+    border-radius: 10px;
+    border: 1px solid #e8e4f5;
+}
+
+#listaExames p {
+    color: #4f4c97;
+    font-weight: 500;
+    margin: 5px 0;
 }
 
 /* Nome/descrição */
@@ -102,6 +142,9 @@ select {
     padding: 15px;
     margin-top: 10px;
     font-size: 16px;
+    border: 2px solid #d8c8f5;
+    background: #f6f0ff;
+    resize: vertical;
 }
 
 /* Botão final */
@@ -109,34 +152,76 @@ select {
     margin-top: 30px;
     padding: 15px 35px;
     font-size: 22px;
-    font-weight: bold;
-    background-color: #666cc2;
+    font-weight: 700;
+    background: linear-gradient(135deg, #666cc2 0%, #4f4c97 100%);
     border: none;
     color: white;
     border-radius: 12px;
     cursor: pointer;
     float: right;
-    transition: 0.2s;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 108, 194, 0.3);
+    font-family: 'Open Sans', sans-serif;
 }
 
 .btEnviar:hover {
-    opacity: 0.9;
+    background: linear-gradient(135deg, #4f4c97 0%, #666cc2 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 108, 194, 0.4);
 }
 
 /* Responsivo */
 @media (max-width: 768px) {
+    body {
+        padding: 15px 20px;
+    }
+    
+    .envioExames {
+        padding: 0 10px;
+    }
+    
     .categoria-data {
         flex-direction: column;
         align-items: flex-start;
+        gap: 15px;
     }
-
+    
     .btEnviar {
         width: 100%;
         float: none;
         text-align: center;
+        margin-top: 25px;
     }
-
+    
     .nomeExame input {
         width: 100%;
+    }
+    
+    select, input[type="date"], input[type="text"] {
+        width: 100% !important;
+    }
+    
+    h1 {
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px 15px;
+    }
+    
+    .envioExame {
+        height: 150px;
+        padding: 20px;
+    }
+    
+    .envioExame p {
+        font-size: 18px;
+    }
+    
+    .btEnviar {
+        padding: 12px 25px;
+        font-size: 18px;
     }
 }

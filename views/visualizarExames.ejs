@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizar Exames</title>
+    <link rel="stylesheet" href="/cabecalho.css">
+    <link rel="stylesheet" href="/visualizacaoDeExame.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="/logo.png" alt="Examoteca">
+            <span>Examoteca</span>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="/cadastrarIdoso">Cadastrar Idoso</a></li>
+                <li><a href="/enviarExames">Enviar Exames</a></li>
+                <li><a href="/visualizarExames">Visualizar Exames</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>Exames Cadastrados</h1>
+
+        <!-- ✅ DEBUG: Mostrar quantos exames foram carregados -->
+        <div style="background: #f8f9fa; padding: 10px; margin: 10px 0; border-radius: 5px;">
+            <strong>EXAMES:</strong> 
+            <%= exames ? exames.length : 0 %> exame(s) carregado(s)
+        </div>
+
+        <% if (exames && exames.length > 0) { %>
+            <div class="exames-lista">
+                <% exames.forEach(exame => { %>
+                    <div class="pasta-exame">
+                        <h3><%= exame.nome_exame %></h3>
+                        <p><strong>Idoso:</strong> <%= exame.nome_idoso %></p>
+                        <p><strong>Categoria:</strong> <%= exame.categoria %></p>
+                        <p><strong>Data do Exame:</strong> <%= new Date(exame.data_exame).toLocaleDateString('pt-BR') %></p>
+                        <p><strong>Arquivo:</strong> <%= exame.nome_arquivo %></p>
+                        <% if (exame.informacoes_adicionais) { %>
+                            <p><strong>Informações:</strong> <%= exame.informacoes_adicionais %></p>
+                        <% } %>
+                        <p><strong>Data de Upload:</strong> <%= new Date(exame.data_upload).toLocaleDateString('pt-BR') %></p>
+                        
+                        <!-- ✅ BOTÃO PARA BAIXAR/VER ARQUIVO -->
+                        <a href="/uploads/<%= exame.caminho_arquivo %>" target="_blank" class="btn-ver">Ver Arquivo</a>
+                    </div>
+                <% }); %>
+            </div>
+        <% } else { %>
+            <div class="sem-exames">
+                <p>Nenhum exame cadastrado ainda.</p>
+                <a href="/enviarExames" class="btn-enviar">Enviar Primeiro Exame</a>
+            </div>
+        <% } %>
+    </div>
+
+</body>
+</html>

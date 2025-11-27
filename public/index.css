@@ -129,3 +129,27 @@ nav a {
     gap: 20px;
   }
 }
+/* SEÇÃO DA IMAGEM DO IDOSO COM CUIDADOR */
+.imagem-cuidador {
+    text-align: center;
+    margin: 50px auto;
+    padding: 30px;
+    max-width: 800px;
+}
+
+.imagem-cuidador img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Se quiser uma imagem com borda decorativa */
+.imagem-cuidador .imagem-container {
+    border: 8px solid #f0edff;
+    border-radius: 25px;
+    padding: 10px;
+    background: linear-gradient(135deg, #f8f6ff, #ffffff);
+    display: inline-block;
+}

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Idoso</title>
+    <link rel="stylesheet" href="/cabecalho.css">
+    <link rel="stylesheet" href="/cadastrarIdoso.css">
+</head>
+
+<body>
+
+     <header>
+        <div class="logo">
+          <img src="/logo.png" alt="Examoteca">
+          <span>Examoteca</span>
+        </div>
+
+        <nav>
+          <ul>
+            <li><a href="/cadastrarIdoso">Cadastrar idoso</a></li>
+            <li><a href="/enviarExames">Enviar exames</a></li>
+            <li><a href="/visualizarExames">Visualizar exames</a></li>
+          </ul>
+        </nav>
+
+    </header>
+
+    <div class="container">
+
+        <h2>Insira algumas informações para iniciar o acompanhamento</h2>
+
+        <!-- ✅ MENSAGEM DE SUCESSO -->
+        <% if (typeof success !== 'undefined' && success) { %>
+            <div class="success-message" style="background: #d4edda; color: #155724; padding: 12px; border-radius: 5px; margin-bottom: 20px; border: 1px solid #c3e6cb;">
+                ✅ Idoso cadastrado com sucesso!
+            </div>
+        <% } %>
+
+        <!-- ✅ FORMULÁRIO COM ACTION E METHOD CORRETOS -->
+        <form action="/cadastrar-idoso" method="POST">
+
+            <!-- Dados pessoais -->
+            <div class="form-row">
+                <label>Nome Completo:</label>
+                <!-- ✅ NAME ADICIONADO -->
+                <input type="text" name="nome" placeholder="Digite o nome completo" required>
+            </div>
+
+            <div class="form-row row-3">
+                <div>
+                    <label>Data de Nascimento:</label>
+                    <!-- ✅ NAME ADICIONADO -->
+                    <input type="date" name="data_nascimento">
+                </div>
+
+                <div>
+                    <label>Gênero:</label>
+                    <!-- ✅ NAME ADICIONADO -->
+                    <select name="genero">
+                        <option value="">Selecione</option>
+                        <option value="Feminino">Feminino</option>
+                        <option value="Masculino">Masculino</option>
+                        <option value="Outro">Outro</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label>Idade:</label>
+                    <!-- ✅ NAME ADICIONADO -->
+                    <input type="number" name="idade" min="0" max="150" placeholder="Idade">
+                </div>
+            </div>
+
+            <h3>Contato de emergência</h3>
+
+            <div class="form-row row-3">
+                <div>
+                    <label>Nome:</label>
+                    <!-- ✅ NAME ADICIONADO -->
+                    <input type="text" name="contato_nome" placeholder="Nome do contato">
+                </div>
+
+                <div>
+                    <label>Telefone:</label>
+                    <!-- ✅ NAME ADICIONADO -->
+                    <input type="text" name="contato_telefone" placeholder="(00) 00000-0000">
+                </div>
+
+                <div>
+                    <label>Email:</label>
+                    <!-- ✅ NAME ADICIONADO -->
+                    <input type="email" name="contato_email" placeholder="email@exemplo.com">
+                </div>
+            </div>
+
+            <h3>Informações de Saúde</h3>
+
+            <div class="form-row row-2">
+                <div>
+                    <label>Condições médicas:</label>
+                    <!-- ✅ NAME ADICIONADO -->
+                    <input type="text" name="condicoes_medicas" placeholder="Diabetes, hipertensão, etc...">
+                </div>
+
+                <div>
+                    <label>Cuidados Especiais:</label>
+                    <!-- ✅ NAME ADICIONADO -->
+                    <input type="text" name="cuidados_especiais" placeholder="Cuidados específicos necessários">
+                </div>
+            </div>
+
+            <!-- ✅ INFORMACOES ADICIONAIS (para juntar todos os campos extras) -->
+            <input type="hidden" name="informacoes" id="informacoesCompletas">
+
+            <div class="btn-container">
+                <!-- ✅ BOTÃO TYPE SUBMIT -->
+                <button type="submit" class="btn-save">Salvar Cadastro</button>
+            </div>
+
+        </form>
+    </div>
+
+    <script>
+        // ✅ JUNTAR TODAS AS INFORMAÇÕES EXTRAS ANTES DE ENVIAR
+        document.querySelector('form').addEventListener('submit', function(e) {
+            const genero = document.querySelector('[name="genero"]').value;
+            const contatoNome = document.querySelector('[name="contato_nome"]').value;
+            const contatoTelefone = document.querySelector('[name="contato_telefone"]').value;
+            const contatoEmail = document.querySelector('[name="contato_email"]').value;
+            const condicoesMedicas = document.querySelector('[name="condicoes_medicas"]').value;
+            const cuidadosEspeciais = document.querySelector('[name="cuidados_especiais"]').value;
+
+            // Criar um objeto com todas as informações
+            const informacoesCompletas = {
+                genero: genero,
+                contato_emergencia: {
+                    nome: contatoNome,
+                    telefone: contatoTelefone,
+                    email: contatoEmail
+                },
+                saude: {
+                    condicoes_medicas: condicoesMedicas,
+                    cuidados_especiais: cuidadosEspeciais
+                }
+            };
+
+            // Converter para JSON e colocar no campo hidden
+            document.getElementById('informacoesCompletas').value = JSON.stringify(informacoesCompletas);
+        });
+    </script>
+
+</body>
+</html>
