@@ -26,30 +26,58 @@
     <div class="container">
         <h1>Exames Cadastrados</h1>
 
-        <!-- ✅ DEBUG: Mostrar quantos exames foram carregados -->
+        <!-- DEBUG: Mostrar quantos exames foram carregados -->
         <div style="background: #f8f9fa; padding: 10px; margin: 10px 0; border-radius: 5px;">
             <strong>EXAMES:</strong> 
-            <%= exames ? exames.length : 0 %> exame(s) carregado(s)
+            <span id="contador-exames">
+                <% if (typeof exames !== 'undefined') { %>
+                    <%= exames.length %>
+                <% } else { %>
+                    0
+                <% } %>
+            </span> exame(s) carregado(s)
         </div>
 
-        <% if (exames && exames.length > 0) { %>
+        <% if (typeof exames !== 'undefined' && exames.length > 0) { %>
             <div class="exames-lista">
-                <% exames.forEach(exame => { %>
+                <% for (let i = 0; i < exames.length; i++) { %>
+                    <% const exame = exames[i]; %>
                     <div class="pasta-exame">
                         <h3><%= exame.nome_exame %></h3>
                         <p><strong>Idoso:</strong> <%= exame.nome_idoso %></p>
                         <p><strong>Categoria:</strong> <%= exame.categoria %></p>
-                        <p><strong>Data do Exame:</strong> <%= new Date(exame.data_exame).toLocaleDateString('pt-BR') %></p>
+                        <p><strong>Data do Exame:</strong> 
+                            <% if (exame.data_exame) { %>
+                                <%= new Date(exame.data_exame).toLocaleDateString('pt-BR') %>
+                            <% } else { %>
+                                Data não informada
+                            <% } %>
+                        </p>
                         <p><strong>Arquivo:</strong> <%= exame.nome_arquivo %></p>
                         <% if (exame.informacoes_adicionais) { %>
                             <p><strong>Informações:</strong> <%= exame.informacoes_adicionais %></p>
                         <% } %>
-                        <p><strong>Data de Upload:</strong> <%= new Date(exame.data_upload).toLocaleDateString('pt-BR') %></p>
+                        <p><strong>Data de Upload:</strong> 
+                            <% if (exame.data_upload) { %>
+                                <%= new Date(exame.data_upload).toLocaleDateString('pt-BR') %>
+                            <% } else { %>
+                                Data não informada
+                            <% } %>
+                        </p>
                         
-                        <!-- ✅ BOTÃO PARA BAIXAR/VER ARQUIVO -->
-                        <a href="/uploads/<%= exame.caminho_arquivo %>" target="_blank" class="btn-ver">Ver Arquivo</a>
+                        <div class="acoes-exame">
+                            <!-- BOTÃO PARA BAIXAR/VER ARQUIVO -->
+                            <a href="/uploads/<%= exame.caminho_arquivo %>" target="_blank" class="btn-ver">Ver Arquivo</a>
+                            
+    
+                            
+                            <!-- BOTÃO EXCLUIR -->
+                            <button class="btn-excluir" data-id="<%= exame.id %>">
+                                Excluir
+                            </button>
+                        </div>
                     </div>
-                <% }); %>
+                <% } %>
             </div>
         <% } else { %>
             <div class="sem-exames">
@@ -58,6 +86,61 @@
             </div>
         <% } %>
     </div>
+
+    <script>
+        // FUNÇÃO PARA EDITAR EXAME
+        document.addEventListener('DOMContentLoaded', function() {
+            // Adiciona event listeners para todos os botões de editar
+            const botoesEditar = document.querySelectorAll('.btn-editar');
+            botoesEditar.forEach(function(botao) {
+                botao.addEventListener('click', function() {
+                    const idExame = this.getAttribute('data-id');
+                    editarExame(idExame);
+                });
+            });
+
+            // Adiciona event listeners para todos os botões de excluir
+            const botoesExcluir = document.querySelectorAll('.btn-excluir');
+            botoesExcluir.forEach(function(botao) {
+                botao.addEventListener('click', function() {
+                    const idExame = this.getAttribute('data-id');
+                    excluirExame(idExame);
+                });
+            });
+        });
+
+        function editarExame(id) {
+            // Redirecionar para página de edição
+            window.location.href = '/editar-exame/' + id;
+        }
+
+        function excluirExame(id) {
+            if (confirm('Tem certeza que deseja excluir este exame?')) {
+                // 
+                fetch('/excluir-exame/' + id, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then(function(response) {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error('Erro na resposta do servidor');
+                    }
+                })
+                .then(function(data) {
+                    alert(data.message || 'Exame excluído com sucesso!');
+                    location.reload();
+                })
+                .catch(function(error) {
+                    console.error('Erro:', error);
+                    alert('Erro ao excluir exame: ' + error.message);
+                });
+            }
+        }
+    </script>
 
 </body>
 </html>
